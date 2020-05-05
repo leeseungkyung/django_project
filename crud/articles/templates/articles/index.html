@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% block body %}
-<h1>index</h1>
-<hr>
-{% for article in articles %}
-    <p>글제목 : {{ article.title }}</p>
-    <p>글내용 : {{ article.content }}</p>
-    <hr>
-{% endfor %}
-<a href="{% url 'articles:create' %}">글쓰기</a>
+    <a href="{% url 'articles:create' %}" class="btn btn-primary mt-4">글쓰기</a>
+    <div class="row-9 mt-3">
+    {% for article in articles %}
+
+        <img src="{{ article.image_thumbnail.url }}">
+        <p>{{ article.content }}</p>
+        <hr>
+    {% endfor %}
+    </div>
 {% endblock %}

@@ -2,7 +2,7 @@
 {% load bootstrap4 %}
 {% block body %}
 
-    <form action="" method="POST" enctype="multipart/form-data" class="mt-4">
+    <form action="{% url 'accounts:signup' %}" method="POST" class="mt-4">
         {% csrf_token %}
         {% bootstrap_form form %}
         <button class="btn btn-primary">제출</button>

@@ -1,19 +1,21 @@
 from django.shortcuts import render, redirect
 from .models import Article
-from .forms import ArticleForm
+from .forms import ArticleForm, CommentForm
 # Create your views here.
 
 def index(request):
-    articles = Article.objects.order_by('-pk')
+
+    articles = Article.objects.all()
     context = {
         'articles':articles
     }
     return render(request, 'articles/index.html', context)
 
 def create(request):
-    if request.method == 'POST':
-        form = ArticleForm(request.POST)
+    if request.method=='POST':
+        form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
+            print("통과")
             form.save()
             return redirect('articles:index')
     else:
@@ -21,5 +23,5 @@ def create(request):
     context = {
         'form':form
     }
-    return render(request, 'articles/form.html',context)
 
+    return render(request, 'articles/form.html', context)

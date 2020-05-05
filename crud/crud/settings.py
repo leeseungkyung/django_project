@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'articles',
+    'bootstrap4',
+    'django_extensions',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +124,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# https://docs.djangoproject.com/en/2.1/howto/static-files/#serving-files-uploaded-by-a-user-during-development
+MEDIA_URL = '/media/'
